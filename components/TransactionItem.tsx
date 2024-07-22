@@ -2,18 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Transaction } from '../app/context/TransactionContext';
 
-interface TransactionItemProps {
-    transaction: {
-      id: string;
-      name: string;
-      amount: number;
-      date: string;
-      place: string;
-    };
-    onPress: () => void;
-  }
+interface Props {
+  transaction: Transaction;
+  onPress: () => void;
+}
 
-const TransactionItem: React.FC<TransactionItemProps> = ({ transaction, onPress }) => (
+const TransactionItem: React.FC<Props> = ({ transaction, onPress }) => (
   <TouchableOpacity style={styles.transactionItem} onPress={onPress}>
     <View style={styles.transactionContent}>
       <Text style={styles.transactionName}>{transaction.name}</Text>

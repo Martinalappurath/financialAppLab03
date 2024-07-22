@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-
+// Define the structure of a Transaction object
 interface Transaction {
   id: string;
   name: string;
@@ -11,6 +10,7 @@ interface Transaction {
   place: string;
 }
 
+// Static array of transactions to be used for summary calculations
 const transactions: Transaction[] = [
   { id: '1', name: 'Groceries', amount: 50, date: '2024-07-01', place: 'hurone' },
   { id: '2', name: 'Rent', amount: 400, date: '2024-07-09', place: 'Hamilton' },
@@ -21,12 +21,18 @@ const transactions: Transaction[] = [
   { id: '7', name: 'Mobile bill', amount: 45, date: '2024-07-24', place: 'Digital' },
 ];
 
+// Functional component to display a summary of transactions
 const Summary = () => {
+  // Calculate the total expenses from all transactions
   const totalExpenses = transactions.reduce((sum, transaction) => sum + transaction.amount, 0);
+  // Calculate the total number of transactions
   const totalTransactions = transactions.length;
-  const balance = 500; // Fixed balance
+  // Fixed balance for demonstration purposes
+  const balance = 500;
 
+  // Find the transaction with the highest amount
   const highestSpendingTransaction = transactions.reduce((prev, current) => (prev.amount > current.amount ? prev : current));
+  // Find the transaction with the lowest amount
   const lowestSpendingTransaction = transactions.reduce((prev, current) => (prev.amount < current.amount ? prev : current));
 
   return (
@@ -59,6 +65,7 @@ const Summary = () => {
   );
 };
 
+// Define the styles for the Summary component
 const styles = StyleSheet.create({
   container: {
     flex: 1,
